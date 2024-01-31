@@ -37,9 +37,9 @@ app.get('/about', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
 // SSL certificate
 const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/chain.pem')
+    key: fs.readFileSync('~/acadielinux/certs/mirrors.acadielinux.ca/privkey.pem'),
+    cert: fs.readFileSync('~/acadielinux/certs/mirrors.acadielinux.ca/cert.pem'),
+    ca: fs.readFileSync('~/acadielinux/certs/mirrors.acadielinux.ca/chain.pem')
 };
 
 

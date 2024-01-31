@@ -1,0 +1,24 @@
+.logo{
+    width: 130px;
+    margin: auto;
+}
+
+.dark-card {
+    background-color: #343a40; /* Use your preferred dark color here */
+    color: #fff; /* Text color for contrast */
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .content-wrap {
+    flex: 1;
+  }
+  
+  .footer {
+    flex-shrink: 0;
+  }

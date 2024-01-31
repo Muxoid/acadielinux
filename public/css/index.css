@@ -1,0 +1,7 @@
+body {
+    background-image: url("/img/Factory_Index.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* Set text color to contrast with the background */
+}

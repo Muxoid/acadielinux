@@ -1,0 +1,44 @@
+{{#if success_msg}}
+    <div class="alert alert-success fade show overlay" id="success_alert">{{success_msg}}
+    </div>
+
+    
+
+    <script>
+  // Target the alert element
+    const myAlert = document.getElementById("success_alert");
+
+  // Function to close the alert
+    function closeAlert() {
+        myAlert.classList.remove("show");
+        setTimeout(function() {
+        myAlert.style.display = "none";
+        }, 1000); // Adjust the time in milliseconds (1 second in this example)
+    }
+
+  // Close the alert after a specific time (e.g., 5 seconds)
+        setTimeout(closeAlert, 1000); // 5000 milliseconds (5 seconds)
+    </script>
+
+{{/if}}
+
+{{#if error_msg}}
+    <div class="alert alert-danger fade show overlay" id="error_alert">{{error_msg}}
+    </div>
+
+    <script>
+  // Target the alert element
+    const myAlert = document.getElementById("error_alert");
+
+  // Function to close the alert
+    function closeAlert() {
+        myAlert.classList.remove("show");
+        setTimeout(function() {
+        myAlert.style.display = "none";
+        }, 1000); // Adjust the time in milliseconds (1 second in this example)
+    }
+
+  // Close the alert after a specific time (e.g., 5 seconds)
+        setTimeout(closeAlert, 1000); // 5000 milliseconds (5 seconds)
+    </script>
+{{/if}}

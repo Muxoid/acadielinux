@@ -3,6 +3,8 @@ const { engine } = require('express-handlebars');
 const https = require('https');
 const path = require('path');
 const serveIndex = require('serve-index');
+require('dotenv').config();
+
 
 const app = express();
 const devPort = 3000;

@@ -5,9 +5,10 @@ node_modules/
 dist/
 build/
 out/
-public/mirrors/
-public/mirrors/
-public/mirrors/
+public/arch/
+public/debian/
+public/mint/
+cert/
 
 # Logs
 logs/

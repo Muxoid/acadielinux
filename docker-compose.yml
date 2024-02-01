@@ -32,5 +32,5 @@ services:
     environment:
       - CERTBOT_EMAIL=mirror@muxoid.com
       - CERTBOT_DOMAIN=acadielinux.ca
-    command: certonly --standalone -m mirror@muxoid.com --agree-tos --no-eff-email -d mirror.acadielinux.ca
+    command: certonly --standalone -m mirror@muxoid.com --keep-until-expiring --agree-tos --no-eff-email -d mirror.acadielinux.ca
     

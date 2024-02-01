@@ -8,10 +8,9 @@ require('dotenv').config();
 
 
 const app = express();
-const devPort = 3000;
+const Port = 3000;
 
 
-const port = process.env.NODE_ENV === 'production' ? prodPort : devPort;
 
 // Setup Handlebars
 app.engine('handlebars', engine());
@@ -57,6 +56,6 @@ function getBandwidthUsage() {
 
     // Development mode - HTTP
     app.listen(devPort, () => {
-        console.log(`Server running on http://localhost:${devPort}`);
+        console.log(`Server running on http://localhost:${Port}`);
     });
 

@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const app = express();
 const devPort = 3000;
-const prodPort = 443;
+
 
 const port = process.env.NODE_ENV === 'production' ? prodPort : devPort;
 
@@ -54,23 +54,9 @@ function getBandwidthUsage() {
     res.json(getBandwidthUsage());
   });
 
-if (process.env.NODE_ENV === 'production') {
-// SSL certificate
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/chain.pem')
-};
 
-// Start server
-https.createServer(options, app).listen(port, () => {
-    console.log(`HTTPS server running on https://localhost:${port}`);
-});
-
-
-} else {
     // Development mode - HTTP
     app.listen(devPort, () => {
         console.log(`Server running on http://localhost:${devPort}`);
     });
-}
+

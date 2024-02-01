@@ -20,11 +20,18 @@ app.set('views', './views');
 
 
 // Directory to serve
-const servePath = path.join(__dirname, 'public');
+const servePath = path.join(__dirname, 'mirrors');
 
 // Serve static files and provide directory listing
 app.use('/mirrors', express.static(servePath));
 app.use('/mirrors', serveIndex(servePath, {'icons': true}));
+
+// Directory to serve
+const servePubPath = path.join(__dirname, 'public');
+
+// Serve static files and provide directory listing
+app.use('/public', express.static(servePubPath));
+app.use('/public', serveIndex(servePubPath, {'icons': true}));
 
 // Routes
 app.get('/', (req, res) => {

@@ -55,7 +55,7 @@ function getBandwidthUsage() {
 
 
     // Development mode - HTTP
-    app.listen(devPort, () => {
+    app.listen(Port, () => {
         console.log(`Server running on http://localhost:${Port}`);
     });
 

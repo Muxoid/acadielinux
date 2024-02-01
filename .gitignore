@@ -5,10 +5,11 @@ node_modules/
 dist/
 build/
 out/
-mirror/
-mirror
+node-app/mirror/
+node-app/mirror
 
-cert/
+cert-data/
+webroot-data/
 
 # Logs
 logs/

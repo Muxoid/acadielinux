@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="/public/css/index.css">
 <link rel="stylesheet" href="/public/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container card dark-card card-body text-center mt-5 content-wrap">
         <h1>Welcome to the mirror site for the Maritimes.</h1>
         <p class="lead"></p>
         
         <a href="https://mirror.acadielinux.ca/mirror/" class="btn btn-primary">Mirrors</a>
+        <div>
+                <canvas id="Bandwidth" width="100%" height="25%"></canvas>
+                <script src="/public/chart-setup.js"></script> 
+        </div>
 </div>
+
 
 {{> _footer}}         

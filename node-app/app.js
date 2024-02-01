@@ -42,14 +42,25 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+// Dummy function to get bandwidth data
+function getBandwidthUsage() {
+    return {
+      incoming: Math.random() * 100, // Random data for demonstration
+      outgoing: Math.random() * 100
+    };
+  }
+  
+  app.get('/api/bandwidth', (req, res) => {
+    res.json(getBandwidthUsage());
+  });
+
 if (process.env.NODE_ENV === 'production') {
 // SSL certificate
 const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/chain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/cert.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/mirror.acadielinux.ca/chain.pem')
 };
-
 
 // Start server
 https.createServer(options, app).listen(port, () => {

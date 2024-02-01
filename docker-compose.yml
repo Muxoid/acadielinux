@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  node-app:
+    build: ./node-app
+    volumes:
+      - ./node-app:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - certbot
+
+  nginx:
+    image: nginx:latest #test Hypothetical image combining NGINX and Certbot
+    ports:
+      - "443:443" # Add port 443 for HTTPS
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./cert-data:/etc/letsencrypt
+      - ./webroot-data:/var/www/certbot
+    depends_on:
+      - node-app
+      - certbot
+
+  certbot:
+    image: certbot/certbot
+    ports:
+      - 80:80
+    volumes:
+      - ./cert-data:/etc/letsencrypt
+      - ./webroot-data:/var/www/html
+    environment:
+      - CERTBOT_EMAIL=mirror@muxoid.com
+      - CERTBOT_DOMAIN=acadielinux.ca
+    command: certonly --standalone -m mirror@muxoid.com --agree-tos --no-eff-email -d mirror.acadielinux.ca
+    

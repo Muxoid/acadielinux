@@ -19,14 +19,14 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 
-// Directory to serve
-const servePath = path.join(__dirname, 'mirrors');
+// Directory to serve mirror.
+const servePath = path.join(__dirname, 'mirror');
 
 // Serve static files and provide directory listing
-app.use('/mirrors', express.static(servePath));
-app.use('/mirrors', serveIndex(servePath, {'icons': true}));
+app.use('/mirror', express.static(servePath));
+app.use('/mirror', serveIndex(servePath, {'icons': true}));
 
-// Directory to serve
+// Directory to serve public website files.
 const servePubPath = path.join(__dirname, 'public');
 
 // Serve static files and provide directory listing
@@ -45,9 +45,9 @@ app.get('/about', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
 // SSL certificate
 const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/mirrors.acadielinux.ca/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/mirrors.acadielinux.ca/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/mirrors.acadielinux.ca/chain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/cert.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/acadielinux.ca/chain.pem')
 };
 
 
@@ -55,6 +55,8 @@ const options = {
 https.createServer(options, app).listen(port, () => {
     console.log(`HTTPS server running on https://localhost:${port}`);
 });
+
+
 } else {
     // Development mode - HTTP
     app.listen(devPort, () => {

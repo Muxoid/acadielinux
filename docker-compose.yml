@@ -5,6 +5,7 @@ services:
     build: ./node-app
     volumes:
       - ./node-app:/usr/src/app
+      - ./cert-data:/etc/letsencrypt
       - /usr/src/app/node_modules
     depends_on:
       - certbot

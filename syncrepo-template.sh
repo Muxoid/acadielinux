@@ -27,7 +27,7 @@
 # lot of traffic.
 
 # Directory where the repo is stored locally. Example: /srv/repo
-target="/home/mirror/acadielinux/node-app/mirror"
+target="/home/mirror/acadielinux/node-app/mirror/arch"
 
 # Lockfile path
 lock="/var/lock/syncrepo.lck"

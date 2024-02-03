@@ -7,6 +7,13 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install any needed packages including vnStat
+# Update the package listings, install vnStat, and clean up apt cache to keep the image size down
+RUN apt-get update && \
+    apt-get install -y vnstat && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Install any needed packages
 RUN npm install
 

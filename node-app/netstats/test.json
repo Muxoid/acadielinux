@@ -1,0 +1,270 @@
+{
+  "vnstatversion": "2.10",
+  "jsonversion": "2",
+  "interfaces": [
+    {
+      "name": "br-6fbba3851b9a",
+      "alias": "",
+      "created": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "timestamp": 1706927587
+      },
+      "updated": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "time": { "hour": 22, "minute": 45 },
+        "timestamp": 1706928300
+      },
+      "traffic": {
+        "total": { "rx": 0, "tx": 0 },
+        "fiveminute": [
+          {
+            "id": 6,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 30 },
+            "timestamp": 1706927400,
+            "rx": 0,
+            "tx": 0
+          },
+          {
+            "id": 5,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 35 },
+            "timestamp": 1706927700,
+            "rx": 0,
+            "tx": 0
+          },
+          {
+            "id": 9,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 40 },
+            "timestamp": 1706928000,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "hour": [
+          {
+            "id": 3,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 0 },
+            "timestamp": 1706925600,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "day": [
+          {
+            "id": 3,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "month": [
+          {
+            "id": 3,
+            "date": { "year": 2024, "month": 2 },
+            "timestamp": 1706760000,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "year": [
+          {
+            "id": 3,
+            "date": { "year": 2024 },
+            "timestamp": 1704081600,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "top": [
+          {
+            "id": 3,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 0,
+            "tx": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker0",
+      "alias": "",
+      "created": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "timestamp": 1706927587
+      },
+      "updated": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "time": { "hour": 22, "minute": 45 },
+        "timestamp": 1706928300
+      },
+      "traffic": {
+        "total": { "rx": 0, "tx": 0 },
+        "fiveminute": [
+          {
+            "id": 4,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 30 },
+            "timestamp": 1706927400,
+            "rx": 0,
+            "tx": 0
+          },
+          {
+            "id": 3,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 35 },
+            "timestamp": 1706927700,
+            "rx": 0,
+            "tx": 0
+          },
+          {
+            "id": 8,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 40 },
+            "timestamp": 1706928000,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "hour": [
+          {
+            "id": 2,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 0 },
+            "timestamp": 1706925600,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "day": [
+          {
+            "id": 2,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "month": [
+          {
+            "id": 2,
+            "date": { "year": 2024, "month": 2 },
+            "timestamp": 1706760000,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "year": [
+          {
+            "id": 2,
+            "date": { "year": 2024 },
+            "timestamp": 1704081600,
+            "rx": 0,
+            "tx": 0
+          }
+        ],
+        "top": [
+          {
+            "id": 2,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 0,
+            "tx": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "ens18",
+      "alias": "",
+      "created": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "timestamp": 1706927587
+      },
+      "updated": {
+        "date": { "year": 2024, "month": 2, "day": 2 },
+        "time": { "hour": 22, "minute": 45 },
+        "timestamp": 1706928300
+      },
+      "traffic": {
+        "total": { "rx": 4658480, "tx": 659968 },
+        "fiveminute": [
+          {
+            "id": 2,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 30 },
+            "timestamp": 1706927400,
+            "rx": 413082,
+            "tx": 36900
+          },
+          {
+            "id": 1,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 35 },
+            "timestamp": 1706927700,
+            "rx": 481490,
+            "tx": 218132
+          },
+          {
+            "id": 7,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 40 },
+            "timestamp": 1706928000,
+            "rx": 3763908,
+            "tx": 404936
+          }
+        ],
+        "hour": [
+          {
+            "id": 1,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "time": { "hour": 22, "minute": 0 },
+            "timestamp": 1706925600,
+            "rx": 4658480,
+            "tx": 659968
+          }
+        ],
+        "day": [
+          {
+            "id": 1,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 4658480,
+            "tx": 659968
+          }
+        ],
+        "month": [
+          {
+            "id": 1,
+            "date": { "year": 2024, "month": 2 },
+            "timestamp": 1706760000,
+            "rx": 4658480,
+            "tx": 659968
+          }
+        ],
+        "year": [
+          {
+            "id": 1,
+            "date": { "year": 2024 },
+            "timestamp": 1704081600,
+            "rx": 4658480,
+            "tx": 659968
+          }
+        ],
+        "top": [
+          {
+            "id": 1,
+            "date": { "year": 2024, "month": 2, "day": 2 },
+            "timestamp": 1706846400,
+            "rx": 4658480,
+            "tx": 659968
+          }
+        ]
+      }
+    }
+  ]
+}

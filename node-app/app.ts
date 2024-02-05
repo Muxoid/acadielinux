@@ -54,7 +54,7 @@ async function getBandwidthUsage() {
         return error;
       }
 }
-  
+/*
 app.get('/api/bandwidth', async (req: Request, res: Response) => {
     try {
         const bandwidthData = await getBandwidthUsage();
@@ -64,7 +64,7 @@ app.get('/api/bandwidth', async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Failed to fetch bandwidth data' });
     }
 });
-
+*/
 
 app.listen(Port, () => {
     console.log(`Server running on http://localhost:${Port}`);

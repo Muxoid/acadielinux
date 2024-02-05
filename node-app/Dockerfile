@@ -6,16 +6,19 @@ WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
+# Install any needed packages
+RUN npm install
 
 # Install any needed packages including vnStat
 # Update the package listings, install vnStat, and clean up apt cache to keep the image size down
 RUN apt-get update && \
     apt-get install -y vnstat && \
+    vnstatd -n -d && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install any needed packages
-RUN npm install
+
+
 
 # Bundle app source inside the Docker image
 COPY . .
@@ -27,4 +30,5 @@ EXPOSE 3000
 ENV NODE_ENV=production
 
 # Run the app when the container launches
-CMD ["node", "app.js"]
+CMD ["npm", "run", "start"]
+

@@ -10,6 +10,12 @@ services:
     depends_on:
       - certbot
 
+  apt-mirror:
+    build: ./sync
+    volumes:
+      - ./sync/mirror.list:/etc/apt/mirror.list
+      - ./node-app/mirror/debian:/srv
+
   nginx:
     image: nginx:latest #test Hypothetical image combining NGINX and Certbot
     ports:

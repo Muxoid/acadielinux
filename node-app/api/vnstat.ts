@@ -1,31 +1,32 @@
 import { exec } from 'child_process';
 
-// Define the interface for the result
+// Adjusted interface to focus on the data
 interface VnstatResult {
-  stdout: string;
-  stderr: string;
+  data: any; // Holds the parsed JSON data
 }
 
-// Function to call vnstat and return its output
-const callVnstat = (): Promise<VnstatResult> => {
+// Function to call vnstat and return its output as JSON
+export function callVnstat(): Promise<VnstatResult> {
   return new Promise((resolve, reject) => {
-    exec('vnstat', (error, stdout, stderr) => {
+    exec('vnstat -h 24 --json', (error, stdout, stderr) => {
       if (error) {
         reject(`error: ${error.message}`);
         return;
       }
       if (stderr) {
-        reject(`stderr: ${stderr}`);
-        return;
+        console.error(`stderr: ${stderr}`); // Log stderr or handle as needed
       }
-      resolve({ stdout, stderr });
+      try {
+        const jsonData = JSON.parse(stdout); // Parse stdout into JSON
+        resolve({ data: jsonData }); // Resolve with just the parsed JSON
+      } catch (parseError) {
+        // Check if parseError is an instance of Error and then access its message
+        if (parseError instanceof Error) {
+          reject(`Error parsing JSON: ${parseError.message}`);
+        } else {
+          reject(`Error parsing JSON: ${parseError}`);
+        }
+      }
     });
   });
 };
-
-// Example usage
-callVnstat().then(result => {
-  console.log('vnstat output:', result.stdout);
-}).catch(error => {
-  console.error('vnstat error:', error);
-});

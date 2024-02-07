@@ -10,11 +10,19 @@ services:
     depends_on:
       - certbot
 
-  apt-mirror:
-    build: ./sync
+  apt-mirror-debian:
+    build: ./sync/debian
     volumes:
-      - ./sync/mirror.list:/etc/apt/mirror.list
-      - ./node-app/mirror/debian:/srv
+      - ./sync/debian/mirror.list:/etc/apt/mirror.list
+      - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+      - ./node-app/mirror/debian:/app
+
+  apt-mirror-ubuntu:
+    build: ./sync/ubuntu
+    volumes:
+      - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
+      - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+      - ./node-app/mirror/ubuntu:/app
 
   nginx:
     image: nginx:latest #test Hypothetical image combining NGINX and Certbot

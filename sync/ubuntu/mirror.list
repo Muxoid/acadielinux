@@ -1,0 +1,56 @@
+############# config ##################
+#
+# set base_path    /var/spool/apt-mirror
+#
+set mirror_path  /app
+# set skel_path    $base_path/skel
+# set var_path     $base_path/var
+# set cleanscript $var_path/clean.sh
+# set defaultarch  <running host architecture>
+# set postmirror_script $var_path/postmirror.sh
+# set run_postmirror 0
+set nthreads     20
+set _tilde 0
+#
+############# end config ##############
+
+# Ubuntu 20.04 mirroring.
+deb https://mirror.csclub.uwaterloo.ca/ubuntu focal main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu focal-security main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu focal-updates main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu focal-proposed main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu focal-backports main restricted universe multiverse
+
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu focal main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu focal-security main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu focal-updates main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu focal-proposed main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu focal-backports main restricted universe multiverse
+
+# Ubuntu 22.04 mirroring.
+deb https://mirror.csclub.uwaterloo.ca/ubuntu jammy main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu jammy-security main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu jammy-updates main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu jammy-proposed main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu jammy-backports main restricted universe multiverse
+
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu jammy main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu jammy-security main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu jammy-updates main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu jammy-proposed main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu jammy-backports main restricted universe multiverse
+
+# Ubuntu 23.04 mirroring.
+deb https://mirror.csclub.uwaterloo.ca/ubuntu mantic main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu mantic-security main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu mantic-updates main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu mantic-proposed main restricted universe multiverse
+deb https://mirror.csclub.uwaterloo.ca/ubuntu mantic-backports main restricted universe multiverse
+
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu mantic main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu mantic-security main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu mantic-updates main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu mantic-proposed main restricted universe multiverse
+deb-src https://mirror.csclub.uwaterloo.ca/ubuntu mantic-backports main restricted universe multiverse
+
+clean http://archive.ubuntu.com/ubuntu

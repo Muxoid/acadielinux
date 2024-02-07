@@ -14,21 +14,31 @@ set _tilde 0
 #
 ############# end config ##############
 
-deb https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-deb-src https://mirror.csclub.uwaterloo.ca/debian/ unstable  main contrib non-free
+# Debian 11 bullseye
+deb https://mirror.csclub.uwaterloo.ca/debian bullseye main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bullseye main/debian-installer main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bullseye-backports main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bullseye-updates main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bullseye-proposed-updates main contrib non-free
 
-# mirror additional architectures
-#deb-alpha https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-deb-amd64 https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-armel https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-hppa https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-deb-i386 https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-ia64 https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-m68k https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-mips https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-mipsel https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-powerpc https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-s390 https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
-#deb-sparc https://mirror.csclub.uwaterloo.ca/debian/ unstable main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-backports main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-updates main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-proposed-updates main contrib non-free
+
+
+# Debian 12 bookworm
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm main/debian-installer main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm-backports main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm-proposed-updates main contrib non-free
+
+deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-backports main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free
+deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-proposed-updates main contrib non-free
+
+
 
 clean http://ftp.us.debian.org/debian

@@ -20,8 +20,8 @@ This repository contains the necessary Docker configuration files and scripts to
 1. **Clone the Repository**
 
    ```bash
-   git clone https://your-repo-url.git
-   cd your-repo-directory
+   git clone https://github.com/Muxoid/acadielinux.git
+   cd acadiwlinux
 
 2. **Modify Config**
 

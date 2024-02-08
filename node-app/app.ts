@@ -4,7 +4,7 @@ import path from 'path';
 import serveIndex from 'serve-index';
 import fs from 'fs';
 import dotenv from 'dotenv';
-import { callVnstat } from './api/vnstat';
+import { fetchNginxStatus } from './api/nginxStats';
 dotenv.config();
 
 const app = express();
@@ -28,43 +28,38 @@ const servePubPath = path.join(__dirname, 'public');
 app.use('/public', express.static(servePubPath), serveIndex(servePubPath, { 'icons': true }));
 
 // Routes
-app.get('/', (req: Request, res: Response) => {
-    res.render('index');
+app.get('/', async (req: Request, res: Response) => {
+
+    const nginxStatus = await fetchNginxStatus();
+    const stats = [
+        { title: "Active Connections", value: nginxStatus.activeConnections },
+        { title: "Accepts", value: nginxStatus.accepts },
+        { title: "Handled", value: nginxStatus.handled },
+        { title: "Queue", value: nginxStatus.reading }
+    ];
+    res.render('index', {stats});
 });
 
 app.get('/about', (req: Request, res: Response) => {
     res.render('about');
 });
 
-// Dummy function to get bandwidth data
-interface BandwidthUsage {
-  incoming: number;
-  outgoing: number;
-}
 
 
 
-async function getBandwidthUsage() {
-    try {
-        const result = await callVnstat();
-        return result.data.interfaces[0].traffic; // Returns only the eth0 interface in the docker container.
-        // Use the data as needed
-      } catch (error) {
-        console.error('Failed to fetch vnstat data:', error);
-        return error;
-      }
-}
-/*
+
+
+
 app.get('/api/bandwidth', async (req: Request, res: Response) => {
     try {
-        const bandwidthData = await getBandwidthUsage();
+        const bandwidthData = await fetchNginxStatus();
         res.json(bandwidthData);
     } catch (error) {
         // If an error occurs, send a response indicating failure
         res.status(500).json({ error: 'Failed to fetch bandwidth data' });
     }
 });
-*/
+
 
 app.listen(Port, () => {
     console.log(`Server running on http://localhost:${Port}`);

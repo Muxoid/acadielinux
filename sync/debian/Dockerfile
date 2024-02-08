@@ -8,22 +8,17 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY apt-mirror-cron /etc/cron.d/apt-mirror-cron
-RUN chmod 0644 /etc/cron.d/apt-mirror-cron &&  crontab /etc/cron.d/apt-mirror-cron
-
-COPY mirror.list /etc/apt/mirror.list
 
 WORKDIR /app
 
-RUN chown -R apt-mirror:apt-mirror /app
 
 
+COPY apt-mirror-cron /etc/cron.d/apt-mirror-cron
+RUN chmod 0644 /etc/cron.d/apt-mirror-cron &&  crontab /etc/cron.d/apt-mirror-cron
 
 
-# Set the working directory in the container
+COPY mirror.list /etc/apt/mirror.list
 
 
-
-# Run the app when the container launches
-CMD ["su", "-","apt-mirror", "-c", "apt-mirror"]
+ENTRYPOINT ["cron", "-f"]
 

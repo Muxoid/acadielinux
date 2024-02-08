@@ -17,9 +17,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
-
-
 # Bundle app source inside the Docker image
 COPY . .
 

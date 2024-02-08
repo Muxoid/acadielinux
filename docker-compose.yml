@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  web-services:
+    driver: bridge
+
 services:
   node-app:
     build: ./node-app
@@ -9,23 +13,12 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - certbot
-
-  apt-mirror-debian:
-    build: ./sync/debian
-    volumes:
-      - ./sync/debian/mirror.list:/etc/apt/mirror.list
-      - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
-      - ./node-app/mirror/debian:/app
-
-  apt-mirror-ubuntu:
-    build: ./sync/ubuntu
-    volumes:
-      - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
-      - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
-      - ./node-app/mirror/ubuntu:/app
+    networks:
+      - web-services
 
   nginx:
-    image: nginx:latest #test Hypothetical image combining NGINX and Certbot
+    image: nginx:latest 
+    hostname: nginx
     ports:
       - "443:443" # Add port 443 for HTTPS
     volumes:
@@ -35,6 +28,8 @@ services:
     depends_on:
       - node-app
       - certbot
+    networks:
+      - web-services
 
   certbot:
     image: certbot/certbot
@@ -46,5 +41,26 @@ services:
     environment:
       - CERTBOT_EMAIL=mirror@muxoid.com
       - CERTBOT_DOMAIN=acadielinux.ca
-    command: certonly --standalone -m mirror@muxoid.com --keep-until-expiring --agree-tos --no-eff-email -d mirror.acadielinux.ca
+    command: certonly --standalone -m mirror@muxoid.com --keep-until-expiring --agree-tos --no-eff-email -d mirror.acadielinux.ca # Change domain and email to your own if you want to clone.
     
+
+
+  apt-mirror-debian:
+    build: ./sync/debian
+    volumes:
+      - ./sync/debian/mirror.list:/etc/apt/mirror.list
+      - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+      - ./node-app/mirror/debian:/app/mirror.csclub.uwaterloo.ca/debian
+
+     
+
+  apt-mirror-ubuntu:
+    build: ./sync/ubuntu
+    volumes:
+      - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
+      - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+      - ./node-app/mirror/ubuntu:/app/mirror.csclub.uwaterloo.ca/ubuntu
+
+  
+
+  

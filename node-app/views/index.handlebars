@@ -25,7 +25,21 @@
             </div>
         </div>
     </div>
-    
 
     <a href="mirror/" class="btn mb-4 btn-primary mt-3">Explore Mirrors</a>
+</div>
+
+<div class="container card bg-dark text-white mt-5 text-center mt-4 content-wrap">
+        <h1 class="mb-4">Status Dashboard</h1>
+        <div class="row">
+            {{#each stats}}
+            <div class="col-md-3 mb-3">
+                <div class="card ">
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold">{{this.title}}: {{this.value}}</h4>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
 </div>

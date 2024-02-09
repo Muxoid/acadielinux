@@ -1,4 +1,4 @@
 #
 # Regular cron jobs for the apt-mirror package
 #
-9 2,8,14,20 * * *	/usr/bin/apt-mirror
+9 2,8,14,20 * * *	/usr/bin/apt-mirror > /var/spool/apt-mirror/var/cron.log

@@ -29,7 +29,7 @@ deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-proposed-updates main
 
 # Debian 12 bookworm
 deb https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free non-free-firmware
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm main/debian-installer main contrib non-free non-free-firmware
+deb https://mirror.csclub.uwaterloo.ca/debian bookworm main debian-installer main contrib non-free non-free-firmware
 deb https://mirror.csclub.uwaterloo.ca/debian bookworm-backports main contrib non-free non-free-firmware
 deb https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free non-free-firmware
 deb https://mirror.csclub.uwaterloo.ca/debian bookworm-proposed-updates main contrib non-free non-free-firmware

@@ -43,16 +43,21 @@ services:
       - CERTBOT_DOMAIN=acadielinux.ca
     command: certonly --standalone -m mirror@muxoid.com --keep-until-expiring --agree-tos --no-eff-email -d mirror.acadielinux.ca # Change domain and email to your own if you want to clone.
     
-
-
+  arch-mirror:
+    build: ./sync/arch
+    volumes:
+      - ./sync/arch/syncrepo-arch.sh:/app/syncrepo-arch.sh
+      - ./sync/arch/arch-mirror-cron:/etc/cron.d/arch-mirror-cron
+      - ./node-app/mirror/arch:/app/arch
+      - ./sync/arch/log:/var/spool/apt-mirror/var
+      
   apt-mirror-debian:
     build: ./sync/debian
     volumes:
       - ./sync/debian/mirror.list:/etc/apt/mirror.list
       - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
       - ./node-app/mirror/debian:/app/mirror.csclub.uwaterloo.ca/debian
-
-     
+      - ./sync/debian/log:/var/spool/apt-mirror/var
 
   apt-mirror-ubuntu:
     build: ./sync/ubuntu
@@ -60,6 +65,16 @@ services:
       - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
       - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
       - ./node-app/mirror/ubuntu:/app/mirror.csclub.uwaterloo.ca/ubuntu
+      - ./sync/ubuntu/log:/var/spool/apt-mirror/var
+
+  rsync:
+    build: ./sync/rsync
+    ports:
+      - 873:873
+    volumes:
+      - ./sync/rsync/rsyncd.conf:/etc/rsyncd.conf
+      - ./node-app/mirror:/app/mirror
+      - ./sync/rsync/log:/var/log
 
   
 

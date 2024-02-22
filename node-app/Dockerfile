@@ -1,6 +1,8 @@
 # Use an official Node runtime as a parent image
 FROM node:latest
 
+RUN ln -sf /usr/share/zoneinfo/America/Halifax /etc/localtime
+
 # Set the working directory in the container
 WORKDIR /usr/src/app
 

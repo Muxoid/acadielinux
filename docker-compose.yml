@@ -16,6 +16,22 @@ services:
     networks:
       - web-services
 
+  certbot:
+    image: certbot/dns-cloudflare
+    ports:
+      - 80:80
+    volumes:
+      - ./cert-data:/etc/letsencrypt
+      - ./certbot:/app
+      - ./certbot/entrypoint.sh:/app/entrypoint.sh
+    environment:
+      - CERTBOT_EMAIL=/run/secrets/email
+      - CERTBOT_DOMAIN=/run/secrets/domain-name
+    secrets:
+      - domain-name
+      - email
+    entrypoint: ["sh", "/app/entrypoint.sh"]   
+
   nginx:
     image: nginx:latest 
     hostname: nginx
@@ -31,41 +47,41 @@ services:
     networks:
       - web-services
 
-  certbot:
-    image: certbot/certbot
-    ports:
-      - 80:80
-    volumes:
-      - ./cert-data:/etc/letsencrypt
-      - ./webroot-data:/var/www/html
-    environment:
-      - CERTBOT_EMAIL=mirror@muxoid.com
-      - CERTBOT_DOMAIN=acadielinux.ca
-    command: certonly --standalone -m mirror@muxoid.com --keep-until-expiring --agree-tos --no-eff-email -d mirror.acadielinux.ca # Change domain and email to your own if you want to clone.
-    
+  
+
+
   arch-mirror:
     build: ./sync/arch
     volumes:
       - ./sync/arch/syncrepo-arch.sh:/app/syncrepo-arch.sh
       - ./sync/arch/arch-mirror-cron:/etc/cron.d/arch-mirror-cron
       - ./node-app/mirror/arch:/app/arch
-      - ./sync/arch/log:/var/spool/apt-mirror/var
-      
-  apt-mirror-debian:
-    build: ./sync/debian
-    volumes:
-      - ./sync/debian/mirror.list:/etc/apt/mirror.list
-      - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
-      - ./node-app/mirror/debian:/app/mirror.csclub.uwaterloo.ca/debian
-      - ./sync/debian/log:/var/spool/apt-mirror/var
+      - ./sync/arch/log:/app/log
 
-  apt-mirror-ubuntu:
-    build: ./sync/ubuntu
+  ftpsync-debian:
+    build: ./sync/debian-ftpsync
     volumes:
-      - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
-      - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
-      - ./node-app/mirror/ubuntu:/app/mirror.csclub.uwaterloo.ca/ubuntu
-      - ./sync/ubuntu/log:/var/spool/apt-mirror/var
+      - ./sync/debian-ftpsync/log:/home/ftpsync/log
+      - ./sync/debian-ftpsync/bin:/home/ftpsync/bin
+      - ./sync/debian-ftpsync/etc:/home/ftpsync/etc
+      - ./node-app/mirror/debian:/home/ftpsync/mirrors/debian/
+      
+      
+ # apt-mirror-debian:
+ #   build: ./sync/debian
+ #   volumes:
+ #     - ./sync/debian/mirror.list:/etc/apt/mirror.list
+ #     - ./sync/debian/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+ #     - ./node-app/mirror/debian:/app/mirror.csclub.uwaterloo.ca/debian
+ #     - ./sync/debian/log:/var/spool/apt-mirror/var
+
+ # apt-mirror-ubuntu:
+ #   build: ./sync/ubuntu
+ #   volumes:
+ #     - ./sync/ubuntu/mirror.list:/etc/apt/mirror.list
+ #     - ./sync/ubuntu/apt-mirror-cron:/etc/cron.d/apt-mirror-cron
+ #     - ./node-app/mirror/ubuntu:/app/mirror.csclub.uwaterloo.ca/ubuntu
+ #     - ./sync/ubuntu/log:/var/spool/apt-mirror/var
 
   rsync:
     build: ./sync/rsync
@@ -75,6 +91,14 @@ services:
       - ./sync/rsync/rsyncd.conf:/etc/rsyncd.conf
       - ./node-app/mirror:/app/mirror
       - ./sync/rsync/log:/var/log
+
+secrets:
+  domain-name:
+    file: ./certbot/domain.txt # put domain name in this file
+  email:
+    file: ./certbot/email.txt # put email in this file
+  
+  
 
   
 

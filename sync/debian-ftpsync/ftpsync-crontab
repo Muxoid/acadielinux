@@ -1,0 +1,6 @@
+#
+# Regular cron jobs for the apt-mirror package
+#
+9 * * * *   su ftpsync -c /home/ftpsync/bin/ftpsync-cron
+
+#

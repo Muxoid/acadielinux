@@ -1,4 +1,6 @@
 #
 # Regular cron jobs for the apt-mirror package
 #
-9 2,8,14,20 * * *	/app/syncrepo-arch.sh > /var/spool/apt-mirror/var/cron.log
+49 * * * *   /app/syncrepo-arch.sh > /app/log/sync.log
+
+#

@@ -14,33 +14,19 @@ set _tilde 0
 #
 ############# end config ##############
 
-# Debian 11 bullseye
-deb https://mirror.csclub.uwaterloo.ca/debian bullseye main contrib non-free
-deb https://mirror.csclub.uwaterloo.ca/debian bullseye main/debian-installer main contrib non-free
-deb https://mirror.csclub.uwaterloo.ca/debian bullseye-backports main contrib non-free
-deb https://mirror.csclub.uwaterloo.ca/debian bullseye-updates main contrib non-free
-deb https://mirror.csclub.uwaterloo.ca/debian bullseye-proposed-updates main contrib non-free
 
-deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye main contrib non-free
-deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-backports main contrib non-free
-deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-updates main contrib non-free
-deb-src https://mirror.csclub.uwaterloo.ca/debian bullseye-proposed-updates main contrib non-free
 
 
 # Debian 12 bookworm
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free non-free-firmware
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm main debian-installer main contrib non-free non-free-firmware
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm-backports main contrib non-free non-free-firmware
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free non-free-firmware
-deb https://mirror.csclub.uwaterloo.ca/debian bookworm-proposed-updates main contrib non-free non-free-firmware
 
-deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free non-free-firmware
-deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-backports main contrib non-free non-free-firmware
-deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free non-free-firmware
-deb-src https://mirror.csclub.uwaterloo.ca/debian bookworm-proposed-updates main contrib non-free non-free-firmware
+deb-src https://mirror.csclub.uwaterloo.ca/debian stable main contrib non-free non-free-firmware
 
-deb-i386 https://mirror.csclub.uwaterloo.ca/debian bookworm main contrib non-free non-free-firmware
-deb-i386 https://mirror.csclub.uwaterloo.ca/debian bookworm-updates main contrib non-free non-free-firmware
+deb-amd64 https://mirror.csclub.uwaterloo.ca/debian stable main contrib non-free non-free-firmware
+
+deb-i386 https://mirror.csclub.uwaterloo.ca/debian stable main contrib non-free non-free-firmware
+
+deb-arm64 https://mirror.csclub.uwaterloo.ca/debian stable main contrib non-free non-free-firmware
+
 
 
 

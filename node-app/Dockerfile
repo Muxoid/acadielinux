@@ -22,11 +22,16 @@ RUN apt-get update && \
 # Bundle app source inside the Docker image
 COPY . .
 
+
+RUN useradd -m -s /bin/bash www
+
 # Make port 3000 available to the world outside this container
 EXPOSE 3000
 
 # Define environment variable
 ENV NODE_ENV=production
+
+USER www
 
 # Run the app when the container launches
 CMD ["npm", "run", "start"]

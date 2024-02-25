@@ -10,10 +10,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
+RUN useradd -m -s /bin/bash rsync
+
+
 WORKDIR /app
 
 EXPOSE 873
-
 
 
 ENTRYPOINT ["rsync", "--daemon", "--no-detach"]

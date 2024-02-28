@@ -21,7 +21,7 @@ This repository contains the necessary Docker configuration files and scripts to
 
    ```bash
    git clone https://github.com/Muxoid/acadielinux.git
-   cd acadlinux
+   cd acadielinux
 
 2. **Modify Config**
 

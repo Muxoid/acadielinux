@@ -22,14 +22,15 @@ services:
       - 80:80
     volumes:
       - ./cert-data:/etc/letsencrypt
-      - ./certbot:/app
       - ./certbot/entrypoint.sh:/app/entrypoint.sh
+      - ./certbot/log:/var/log/letsencrypt/
+
     environment:
+      - CERTBOT_CRED_INI=/run/secrets/cred
       - CERTBOT_EMAIL=/run/secrets/email
-      - CERTBOT_DOMAIN=/run/secrets/domain-name
     secrets:
-      - domain-name
       - email
+      - cred
     entrypoint: ["sh", "/app/entrypoint.sh"]   
 
   nginx:
@@ -76,10 +77,10 @@ services:
       - ./sync/rsync/log:/var/log
 
 secrets:
-  domain-name:
-    file: ./certbot/domain.txt # put domain name in this file
   email:
-    file: ./certbot/email.txt # put email in this file
+    file: ./certbot/email.txt # put domain name in this file
+  cred:
+    file: ./certbot/cred_ini.txt # put email in this file
   
   
 

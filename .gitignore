@@ -7,7 +7,8 @@ build/
 out/
 node-app/mirror/
 node-app/mirror
-certbot/
+certbot/*.txt
+certbot/log/
 sync/*/log/
 
 cert-data/

@@ -29,6 +29,18 @@ This repository contains the necessary Docker configuration files and scripts to
 
    The main file to change is the docker-compose.yml file so that the cert uses your domain.
    Change the branding in the HTML of not up to you.
+   This project requires a SSL cert to run the Nginx reverse proxy if you do not want or need SSL you can fork the project.
+
+   My config requires a cloudflare account, a domain name controled by cloudflare.
+
+   To get you cert you need to add 2 files and modify the entrypoint.sh file in the certbot directory.
+
+   - Modify the entrypoint.sh file to use your domain.
+   - Add 2 files
+   - email.txt
+   - cred_ini.txt
+
+   These two files are needed in the entrypoint.sh files and the docker-compose.yml files to hydrate the cloudflare secrets.
 
 3. **Run**
 

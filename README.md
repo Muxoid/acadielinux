@@ -23,38 +23,34 @@ This repository contains the necessary Docker configuration files and scripts to
    git clone https://github.com/Muxoid/acadielinux.git
    cd acadielinux
 
+   ```
+
 2. **Modify Config**
 
    The main file to change is the docker-compose.yml file so that the cert uses your domain.
    Change the branding in the HTML of not up to you.
-   
-1. **Run**
+
+3. **Run**
 
    I recommend removing the -d on the first run to see any issues that may arise.
+
    ```bash
    docker compose up -d --build
    ```
+
    Run the previous command in the root of the git clone and everything should be up and running in a few moments but will take a while depending
    on your network connection to get the mirrors downloaded.
 
-
    In the end your project tree should look like soo ->
+
 ```
-├── cert-data
-│   ├── accounts
-│   │   
-│   ├── archive
-│   │   └── your.domian.com
-│   ├── live
-│   │   ├── your.domian.com
-│   │   └── README
-│   ├── renewal
-│   │   └── your.domian.com.conf
-│   └── renewal-hooks
-│       ├── deploy
-│       ├── post
-│       └── pre
+
+.
+├── certbot
+│   └── entrypoint.sh
+├── docker-compose-dev.yml
 ├── docker-compose.yml
+├── LICENSE
 ├── nginx
 │   └── nginx.conf
 ├── node-app
@@ -62,10 +58,7 @@ This repository contains the necessary Docker configuration files and scripts to
 │   │   └── nginxStats.ts
 │   ├── app.ts
 │   ├── Dockerfile
-│   ├── mirror
-│   │   ├── arch
-│   │   ├── debian
-│   │   └── ubuntu
+│   ├── node_modules
 │   ├── nodemon.json
 │   ├── package.json
 │   ├── package-lock.json
@@ -74,24 +67,55 @@ This repository contains the necessary Docker configuration files and scripts to
 │   │   ├── android-chrome-512x512.png
 │   │   ├── apple-touch-icon.png
 │   │   ├── css
+│   │   │   ├── footer.css
+│   │   │   ├── index.css
+│   │   │   ├── navbar.css
+│   │   │   └── style.css
 │   │   ├── favicon-16x16.png
 │   │   ├── favicon-32x32.png
 │   │   ├── favicon.ico
 │   │   ├── img
+│   │   │   ├── acadian_flag.jpg
+│   │   │   └── Shediac.png
 │   │   └── site.webmanifest
 │   └── views
 │       ├── index.handlebars
 │       ├── layouts
+│       │   └── main.handlebars
 │       └── partials
-├── sync
-│   ├── debian
-│   │   ├── apt-mirror-cron
-│   │   ├── Dockerfile
-│   │   └── mirror.list
-│   └── ubuntu
-│       ├── apt-mirror-cron
-│       ├── Dockerfile
-│       └── mirror.list
-└── syncrepo-template.sh
-
+│           ├── _errors.handlebars
+│           ├── _footer.handlebars
+│           ├── _msg.handlebars
+│           └── _navbar.handlebars
+├── README.md
+└── sync
+    ├── arch
+    │   ├── arch-mirror-cron
+    │   ├── Dockerfile
+    │   └── syncrepo-arch.sh
+    ├── debian-ftpsync
+    │   ├── bin
+    │   │   ├── ftpsync
+    │   │   ├── ftpsync-cron
+    │   │   ├── rsync-ssl-tunnel
+    │   │   └── runmirrors
+    │   ├── doc
+    │   │   ├── ftpsync.1.md
+    │   │   ├── ftpsync.conf.5.md
+    │   │   ├── ftpsync-cron.1.md
+    │   │   ├── rsync-ssl-tunnel.1.md
+    │   │   ├── runmirrors.1.md
+    │   │   ├── runmirrors.conf.5.md
+    │   │   └── runmirrors.mirror.5.md
+    │   ├── Dockerfile
+    │   ├── etc
+    │   │   ├── ftpsync.conf
+    │   │   ├── ftpsync.conf.sample
+    │   │   ├── runmirrors.conf.sample
+    │   │   └── runmirrors.mirror.sample
+    │   ├── ftpsync-crontab
+    │   └── README.md
+    └── rsync
+        ├── Dockerfile
+        └── rsyncd.conf
 ```

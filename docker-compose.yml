@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 networks:
   web-services:
@@ -31,10 +31,10 @@ services:
     secrets:
       - email
       - cred
-    entrypoint: ["sh", "/app/entrypoint.sh"]   
+    entrypoint: ["sh", "/app/entrypoint.sh"]
 
   nginx:
-    image: nginx:latest 
+    image: nginx:latest
     hostname: nginx
     ports:
       - "443:443" # Add port 443 for HTTPS
@@ -47,9 +47,6 @@ services:
       - certbot
     networks:
       - web-services
-
-  
-
 
   arch-mirror:
     build: ./sync/arch
@@ -65,8 +62,8 @@ services:
       - ./sync/debian-ftpsync/log:/home/ftpsync/log
       - ./sync/debian-ftpsync/bin:/home/ftpsync/bin
       - ./sync/debian-ftpsync/etc:/home/ftpsync/etc
-      - ./node-app/mirror/debian:/home/ftpsync/mirrors/debian/
-      
+      - ./node-app/mirror/:/home/ftpsync/mirror/
+
   rsync:
     build: ./sync/rsync
     ports:
@@ -81,9 +78,4 @@ secrets:
     file: ./certbot/email.txt # put domain name in this file
   cred:
     file: ./certbot/cred_ini.txt # put email in this file
-  
-  
 
-  
-
-  

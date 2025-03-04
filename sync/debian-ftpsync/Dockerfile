@@ -12,7 +12,7 @@ RUN apt-get update && \
 RUN ln -sf /usr/share/zoneinfo/America/Halifax /etc/localtime
 
 #RUN chmod 0644 /etc/cron.d/ftpsync-cron &&  crontab /etc/cron.d/ftpsync-cron
-
+USER root
 # Create a new user 'myuser' with a home directory
 RUN useradd -m -s /bin/bash ftpsync
 WORKDIR /home/ftpsync

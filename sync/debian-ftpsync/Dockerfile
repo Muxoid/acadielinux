@@ -4,9 +4,9 @@ FROM debian:latest
 
 # Install install apt-mirror because the ftpsync sucks.
 RUN apt-get update && \
-    apt-get install -y rsync cron sudo curl && \ 
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+  apt-get install -y rsync cron sudo curl && \ 
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
 
 RUN ln -sf /usr/share/zoneinfo/America/Halifax /etc/localtime
@@ -18,7 +18,7 @@ RUN useradd -m -s /bin/bash ftpsync
 WORKDIR /home/ftpsync
 
 COPY ftpsync-crontab /etc/cron.d/ftpsync-crontab
-RUN chmod 0754 /etc/cron.d/ftpsync-crontab &&  crontab /etc/cron.d/ftpsync-crontab
+RUN chmod 0776 /etc/cron.d/ftpsync-crontab &&  crontab /etc/cron.d/ftpsync-crontab
 
 
 RUN crontab /etc/cron.d/ftpsync-crontab

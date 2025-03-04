@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:23.9.0-bookworm-slim
+FROM node:23.9.0-alpine3.21
 
 RUN ln -sf /usr/share/zoneinfo/America/Halifax /etc/localtime
 

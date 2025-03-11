@@ -1,0 +1,49 @@
+%YAML 1.1
+---
+# Suricata configuration file
+
+# Default path for rule files
+default-rule-path: /etc/suricata/rules
+
+# List of rule files to load
+rule-files:
+  - abuseipdb_blacklist.rules
+
+# Network variables
+vars:
+  address-groups:
+    HOME_NET: "[172.16.0.0/12, 192.168.0.0/16, 10.0.0.0/8]"  # Typical Docker bridge network ranges
+    EXTERNAL_NET: "!$HOME_NET"
+  port-groups:
+    HTTP_PORTS: "80"
+    SHELLCODE_PORTS: "!80"
+
+# Packet capture configuration
+af-packet:
+  - interface: eth0
+    threads: 1
+    cluster-id: 99
+    cluster-type: cluster_flow
+    defrag: yes
+    use-mmap: yes
+    ring-size: 65535
+
+# Output configuration
+outputs:
+  - fast:
+      enabled: yes
+      filename: fast.log
+      append: yes
+  - eve-log:
+      enabled: yes
+      filetype: regular  # Outputs JSON to a regular file
+      filename: eve.json
+      append: yes
+      types:
+        - alert:
+            payload: no
+            payload-buffer-size: 4kb
+            payload-printable: yes
+            packet: yes
+            http: yes
+            tls: yes

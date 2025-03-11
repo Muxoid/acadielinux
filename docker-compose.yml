@@ -16,6 +16,18 @@ services:
     networks:
       - web-services
 
+  suricata:
+    image: jasonish/suricata:latest
+    networks:
+     - web-services
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./suricata:/etc/suricata
+      - ./suricata/logs:/var/log/suricata
+      - ./suricata/rules:/etc/suricata/rules
+    command: ["-i", "eth0"]
+
   certbot:
     image: certbot/dns-cloudflare
     ports:
@@ -56,13 +68,6 @@ services:
       - ./node-app/mirror/arch:/app/arch
       - ./sync/arch/log:/app/log
 
-  ftpsync-debian:
-    build: ./sync/debian-ftpsync
-    volumes:
-      - ./sync/debian-ftpsync/log:/home/ftpsync/log
-      - ./sync/debian-ftpsync/bin:/home/ftpsync/bin
-      - ./sync/debian-ftpsync/etc:/home/ftpsync/etc
-      - ./node-app/mirror/:/home/ftpsync/mirror/
 
   rsync:
     build: ./sync/rsync
